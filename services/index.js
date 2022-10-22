@@ -180,6 +180,7 @@ export const getAppDetails = async (slug) => {
         title
         version
         website
+        updatedAt
         application {
           url
           fileName

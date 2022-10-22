@@ -1,82 +1,23 @@
-import React, { useState } from 'react'
-import { getAppDetails, getApps } from '../../services';
-import moment from 'moment'
-import downIcon from '../../public/1534536349.svg'
+import React, { useState } from "react";
+import { getAppDetails, getApps } from "../../services";
+import moment from "moment";
+import downIcon from "../../public/1534536349.svg";
 import { useRouter } from "next/router";
-import {Loader} from '../../components'
-import Link from 'next/link';
+import { Description, Loader, SimilarApp } from "../../components";
+import Link from "next/link";
 
-
-const App = ({app}) => {
-
+const App = ({ app }) => {
   const router = useRouter();
 
-  const [description, setDescription] = useState(false)
+  const [description, setDescription] = useState(false);
 
   if (router.isFallback) {
     return <Loader />;
   }
 
-  const getContentFragment = (index, text, obj, type) => {
-    let modifiedText = text;
-
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = <b key={index}>{text}</b>;
-      }
-
-      if (obj.italic) {
-        modifiedText = <em key={index}>{text}</em>;
-      }
-
-      if (obj.underline) {
-        modifiedText = <u key={index}>{text}</u>;
-      }
-    }
-
-    switch (type) {
-      case "heading-three":
-        return (
-          <h3 key={index} className="text-xl font-semibold mb-4">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h3>
-        );
-      case "paragraph":
-        return (
-          <p key={index} className="mb-8 font-light text-sm">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </p>
-        );
-      case "heading-four":
-        return (
-          <h4 key={index} className="text-md font-semibold mb-4">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h4>
-        );
-      case "image":
-        return (
-          <img
-            key={index}
-            alt={obj.title}
-            height={obj.height}
-            width={obj.width}
-            src={obj.src}
-          />
-        );
-      default:
-        return modifiedText;
-    }
-  };
-
-  console.log('app', app)
+  console.log("app", app);
   return (
-    <div className=" max-w-[1000px] mx-auto min-h-screen pb-8">
+    <div className=" max-w-[1000px] mx-auto pb-8">
       <div className="flex items-center py-5 border-b">
         <div className="flex w-[80%]">
           <img src={app.icon} alt={app.title} className="pr-4" />
@@ -120,25 +61,17 @@ const App = ({app}) => {
           </span>
         </div>
       </div>
-      <div className='border-b py-2'>
+      <div className="border-b py-2">
         <div>
           <h1 className="font-medium text-2xl pb-2">Description</h1>
           <p>
             {!description ? (
-              <p className='font-light text-sm'>{app.description.substr(0, 400)}{" ..."}</p>
+              <p className="font-light text-sm">
+                {app.description.substr(0, 400)}
+                {" ..."}
+              </p>
             ) : (
-              app.descriptions.raw.children.map((typeObj, index) => {
-                const children = typeObj.children.map((item, itemIndex) =>
-                  getContentFragment(itemIndex, item.text, item)
-                );
-
-                return getContentFragment(
-                  index,
-                  children,
-                  typeObj,
-                  typeObj.type
-                );
-              })
+              <Description description={app.descriptions} />
             )}
           </p>
           <button
@@ -150,12 +83,53 @@ const App = ({app}) => {
             {description ? "Show less" : "Read More"}
           </button>
         </div>
+        <br />
+        <h1 className="font-medium text-2xl pb-2">Aditional Information</h1>
+        <div className="flex justify-between max-w-md">
+          <div>
+            <h3 className="mt-2">Category</h3>
+            <span className="font-light text-sm text-gray-300">
+              {app.category}
+            </span>
+            <h3 className="mt-5">Content Rating</h3>
+            <span className="font-light text-sm text-gray-300">
+              {app.content_rating}
+            </span>
+          </div>
+          <div>
+            <h3 className="mt-2">Available on</h3>
+            <a
+              rel="nofollow"
+              target="_blank"
+              title="Get Yahoo Mail on Google Play"
+              href={app.market_url}
+            >
+              <img
+                width="84.46"
+                height="18"
+                class=" bg-white p-2 rounded-md"
+                alt="Get on Google Play"
+                src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Google_Play_2022_logo.svg"
+              />
+            </a>
+            <h3 className="mt-5">Updated on</h3>
+            <span className="font-light text-sm text-gray-300">
+              {moment(app.updateAt).format("DD MMM, YYYY")}
+            </span>
+          </div>
+        </div>
+      </div><br/>
+      <div>
+        <h1 className="font-medium text-2xl pb-2">You might like</h1>
+        <div className='relative w-[100%]'>
+          <SimilarApp slugs={app.similar}/>
+        </div>
       </div>
     </div>
   );
-}
+};
 
-export default App
+export default App;
 
 export async function getStaticProps({ params }) {
   const data = await getAppDetails(params.slug);

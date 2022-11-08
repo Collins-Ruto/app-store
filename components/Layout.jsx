@@ -3,11 +3,11 @@ import Header from './Header'
 
 const Layout = ({children}) => {
   return (
-    <div>
-        <Header />
-        {children}
+    <div className="dark:bg-gray-900 dark:text-white">
+      <Header />
+      {children}
     </div>
-  )
+  );
 }
 
 export default Layout

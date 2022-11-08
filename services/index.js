@@ -39,6 +39,38 @@ export const getCategories = async () => {
   return result.categoriesConnection.edges;
 };
 
+export const getTopApps = async () => {
+  const query = gql`
+    query MyQuery {
+      appsConnection(first: 10, orderBy: rating_DESC) {
+        edges {
+          node {
+            category
+            content_rating
+            created
+            description
+            downloads
+            icon
+            market_url
+            rating
+            short_desc
+            similar
+            size
+            slug
+            title
+            version
+            website
+          }
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query);
+
+  return result.appsConnection.edges;
+};
+
 export const submitApps = async (obj) => {
   const result = await fetch("/api/apps", {
     method: "POST",

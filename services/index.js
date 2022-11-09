@@ -166,6 +166,9 @@ export const getAppDetails = async (slug) => {
         created
         content_rating
         description
+        descriptions {
+          raw
+        }
         downloads
         icon
         market_url

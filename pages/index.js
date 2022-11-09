@@ -72,7 +72,6 @@ const Home = ({categories, topApps}) => {
                   href={`/category/${category.node.slug}`}
                   className="font-bold text-3xl px-4"
                 >
-                  {console.log('category',category.node.slug)}
                   {category.node.name}
                 </Link>
                 <Link

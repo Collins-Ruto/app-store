@@ -39,6 +39,42 @@ export const getCategories = async () => {
   return result.categoriesConnection.edges;
 };
 
+export const getApps = async () => {
+  const query = gql`
+    query Apps {
+      appsConnection {
+        edges {
+          node {
+            content_rating
+            created
+            description
+            downloads
+            icon
+            market_url
+            rating
+            size
+            slug
+            short_desc
+            similar
+            title
+            version
+            website
+            category
+            categories {
+              slug
+              name
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query);
+
+  return result.appsConnection.edges;
+};
+
 export const getAllCategories = async () => {
   const query = gql`
     query getCategories {
@@ -122,6 +158,40 @@ export const getCategoryApps = async (slug) => {
 
   return result.appsConnection.edges;
 };
+export const getAppDetails = async (slug) => {
+  const query = gql`
+    query Apps($slug: String!) {
+      app(where: { slug: $slug }) {
+        category
+        created
+        content_rating
+        description
+        downloads
+        icon
+        market_url
+        rating
+        short_desc
+        similar
+        size
+        slug
+        title
+        version
+        website
+        application {
+          url
+          fileName
+          size
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query, {slug});
+
+  return result.app;
+};
+
+
 
 export const submitApps = async (obj) => {
   const result = await fetch("/api/apps", {

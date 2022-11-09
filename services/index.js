@@ -39,6 +39,21 @@ export const getCategories = async () => {
   return result.categoriesConnection.edges;
 };
 
+export const getAllCategories = async () => {
+  const query = gql`
+    query getCategories {
+      categories {
+        name
+        slug
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query);
+
+  return result.categories;
+};
+
 export const getTopApps = async () => {
   const query = gql`
     query MyQuery {
@@ -67,6 +82,43 @@ export const getTopApps = async () => {
   `;
 
   const result = await request(graphqlAPI, query);
+
+  return result.appsConnection.edges;
+};
+
+export const getCategoryApps = async (slug) => {
+  const query = gql`
+    query getCategoryApps($slug: String!) {
+      appsConnection(where: { categories_some: { slug: $slug } }) {
+        edges {
+          cursor
+          node {
+            content_rating
+            created
+            description
+            downloads
+            icon
+            market_url
+            rating
+            size
+            slug
+            short_desc
+            similar
+            title
+            version
+            website
+            category
+            categories {
+              slug
+              name
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query, {slug});
 
   return result.appsConnection.edges;
 };

@@ -36,7 +36,7 @@ const AppCard = ({ app }) => {
             {app.rating.toFixed(2)}
           </div>
           <span class="text-xs md:text-sm text-gray-900 dark:text-white">
-            35 MB
+            {(app.size/1024000).toFixed(1)} MB
           </span>
         </div>
       </div>

@@ -25,18 +25,12 @@ const Home = ({categories, topApps}) => {
       </Head>
       <div className="w-[100%] relative">
         <div className="min-w-full inline-flex justify-between ">
-          <Link href={`/category/apps`} className="font-bold text-3xl px-4">
+          <Link href='#' className="font-bold text-3xl px-4">
             <div
               src="https://cdn-mobile.aptoide.com/static/imgs/apps-ic.svg"
               class="bundle-header__Icon-sc-5qh14w-6 gIrIwm"
             ></div>
             Applications
-          </Link>
-          <Link
-            href={`/category/apps`}
-            className="font-bold text-2xl px-4 text-orange-600 cursor-pointer float-right"
-          >
-            See more{" "}
           </Link>
         </div>
         <div className="overflow-hidden">
@@ -78,6 +72,7 @@ const Home = ({categories, topApps}) => {
                   href={`/category/${category.node.slug}`}
                   className="font-bold text-3xl px-4"
                 >
+                  {console.log('category',category.node.slug)}
                   {category.node.name}
                 </Link>
                 <Link

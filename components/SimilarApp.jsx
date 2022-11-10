@@ -3,20 +3,21 @@ import { getAppDetails } from "../services";
 import AppCard from "./AppCard";
 
 const SimilarApp = ({ slugs }) => {
-  const [apps, setApps] = useState([])
+  const [apps, setApps] = useState([]);
   useEffect(() => {
-
     slugs.forEach(async (slug) => {
       const newSlug = slug.replaceAll(".", "").toLowerCase();
       const result = await getAppDetails(newSlug);
-  
-      result != null &&
-        apps.indexOf(result) < 0 &&
-        setApps((appsArr) => [...appsArr, result]);
-      console.log(apps);
-      return
+
+      if (result == null || slugs.includes(newSlug)) {
+        return;
+      }
+
+      setApps((appsArr) => [...appsArr, result]);
+      return;
     });
-  },[])
+  }, []);
+
   return (
     <div>
       {!(apps.length >= 1) ? (

@@ -15,7 +15,6 @@ const App = ({ app }) => {
     return <Loader />;
   }
 
-  console.log("app", app);
   return (
     <div className=" max-w-[1000px] mx-auto pb-8">
       <div className="flex items-center py-5 border-b">
@@ -55,7 +54,7 @@ const App = ({ app }) => {
         </div>
         <div className="text-center">
           <span className="w-60 transition duration-500 transform hover:translate-y-1 inline-block bg-green-500 text-2xl font-medium text-white px-8 py-2 cursor-pointer rounded-lg">
-            <Link className href={app?.application.url}>
+            <Link className='' href={app.application ? app.application.url : "#"}>
               <img src={downIcon} alt="" /> Download
             </Link>
           </span>
@@ -118,11 +117,12 @@ const App = ({ app }) => {
             </span>
           </div>
         </div>
-      </div><br/>
+      </div>
+      <br />
       <div>
         <h1 className="font-medium text-2xl pb-2">You might like</h1>
-        <div className='relative w-[100%]'>
-          <SimilarApp slugs={app.similar}/>
+        <div className="relative w-[100%]">
+          <SimilarApp slugs={app.similar} />
         </div>
       </div>
     </div>

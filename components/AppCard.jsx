@@ -8,24 +8,24 @@ const AppCard = ({ app }) => {
   return (
     <Link
       href={`/app/${app.slug}`}
-      class="block min-w-[7rem] border-2 max-w-[7rem] md:min-w-[10rem] md:max-w-[10rem] bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
+      className="block min-w-[7rem] border-2 max-w-[7rem] md:min-w-[10rem] md:max-w-[10rem] bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 mr-auto"
     >
       <img
-        class="p-2 rounded-t-lg"
+        className="p-2 rounded-t-lg"
         src={app.icon || icon}
         alt="product image"
       />
 
-      <div class="px-2 pb-2 relative overflow-auto">
-        <h5 class="h-16 md:h-14 text-sm md:text-base font-semibold tracking-tight text-gray-900 dark:text-white">
+      <div className="px-2 pb-2 relative overflow-auto">
+        <h5 className="h-16 md:h-14 text-sm md:text-base font-semibold tracking-tight text-gray-900 dark:text-white">
           {app.title.substr(0, 30)}
         </h5>
 
-        <div class="flex justify-between items-center align-middle">
-          <div class="flex text-xs md:text-sm items-center text-gray-900 dark:text-white">
+        <div className="flex justify-between items-center align-middle">
+          <div className="flex text-xs md:text-sm items-center text-gray-900 dark:text-white">
             <svg
               aria-hidden="true"
-              class="w-4 h-4 text-yellow-300 pb-0.5 md:w-5 md:h-5"
+              className="w-4 h-4 text-yellow-300 pb-0.5 md:w-5 md:h-5"
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@ const AppCard = ({ app }) => {
             </svg>
             {app.rating.toFixed(2)}
           </div>
-          <span class="text-xs md:text-sm text-gray-900 dark:text-white">
+          <span className="text-xs md:text-sm text-gray-900 dark:text-white">
             {(app.size/1024000).toFixed(1)} MB
           </span>
         </div>

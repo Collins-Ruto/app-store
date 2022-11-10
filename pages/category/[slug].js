@@ -3,21 +3,22 @@ import { useRouter } from "next/router";
 import { Loader, AppCard } from "../../components";
 import { getAllCategories, getCategories, getCategoryApps } from "../../services";
 
-const CategoryApps = ({ apps, name}) => {
+const CategoryApps = ({apps, data}) => {
   const router = useRouter();
+  const name = "j"
 
   if (router.isFallback) {
     return <Loader />;
   }
 
-  console.log(apps);
+  console.log(data);
   return (
-    <div>
+    <div className="max-w-[97%] mx-auto">
       <h1>{name}</h1>
       <div className="overflow-hidden">
           <div className="block my-4 mx-auto p-0">
-            <div className=" h-full gap-2 mx-4 overflow-auto scrollbar-hide relative w-full mb-2 items-center ">
-              {topApps.map((app, index) => (
+            <div className="flex h-full gap-2 flex-wrap pl-2 justify-center relative w-full mb-2 items-center ">
+              {apps.map((app, index) => (
                 <AppCard key={index} app={app.node} />
               ))}
             </div>
@@ -34,7 +35,7 @@ export async function getStaticProps({ params }) {
   const apps = await getCategoryApps(params.slug);
 
   return {
-    props: { apps: apps, name: params.name },
+    props: {apps},
   };
 }
 

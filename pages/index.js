@@ -18,7 +18,7 @@ const Home = ({categories, topApps}) => {
   
   // console.log('newApps',newApps.app_list)
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="flex min-h-screen px-4 flex-col items-center justify-center py-2">
       <Head>
         <title>Applate</title>
         <link rel="icon" href="/favicon.ico" />
@@ -28,7 +28,7 @@ const Home = ({categories, topApps}) => {
           <Link href='#' className="font-bold text-3xl px-4">
             <div
               src="https://cdn-mobile.aptoide.com/static/imgs/apps-ic.svg"
-              class="bundle-header__Icon-sc-5qh14w-6 gIrIwm"
+              className="bundle-header__Icon-sc-5qh14w-6 gIrIwm"
             ></div>
             Applications
           </Link>
@@ -64,9 +64,9 @@ const Home = ({categories, topApps}) => {
         </div>
       </div>
       {categories.map(
-        (category) =>
+        (category, index) =>
           category.node.name != "Games" && (
-            <div className="w-[100%] relative">
+            <div className="w-[100%] relative" key={index}>
               <div className="min-w-full inline-flex justify-between ">
                 <Link
                   href={`/category/${category.node.slug}`}

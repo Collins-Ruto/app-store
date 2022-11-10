@@ -22,11 +22,11 @@ const App = ({ app }) => {
           <img src={app.icon} alt={app.title} className="pr-4" />
           <div className="leading-7">
             <h1 className="font-semibold text-2xl">{app.title}</h1>
-            <div class="flex justify-between w-40 items-center align-middle">
-              <div class="flex text-orange-500 text-xs md:text-sm items-center">
+            <div className="flex justify-between w-40 items-center align-middle">
+              <div className="flex text-orange-500 text-xs md:text-sm items-center">
                 <svg
                   aria-hidden="true"
-                  class="w-4 h-4 0 pb-0.5 md:w-5 md:h-5"
+                  className="w-4 h-4 0 pb-0.5 md:w-5 md:h-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +36,7 @@ const App = ({ app }) => {
                 </svg>
                 {app.rating && app.rating.toFixed(2)}
               </div>
-              <span class="text-xs md:text-sm text-gray-900 dark:text-white">
+              <span className="text-xs md:text-sm text-gray-900 dark:text-white">
                 {(app.size / 1024000).toFixed(1)} MB
               </span>
             </div>
@@ -106,7 +106,7 @@ const App = ({ app }) => {
               <img
                 width="84.46"
                 height="18"
-                class=" bg-white p-2 rounded-md"
+                className=" bg-white p-2 rounded-md"
                 alt="Get on Google Play"
                 src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Google_Play_2022_logo.svg"
               />

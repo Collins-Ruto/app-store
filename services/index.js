@@ -149,6 +149,7 @@ export const getAppDetails = async (slug) => {
         title
         version
         website
+        min_sdk
         updatedAt
         application {
           url
@@ -160,6 +161,7 @@ export const getAppDetails = async (slug) => {
   `;
 
   const result = await request(graphqlAPI, query, {slug});
+  setTimeout(() => {}, 800);
 
   return result.app;
 };

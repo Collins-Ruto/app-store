@@ -106,3 +106,38 @@ export async function getStaticProps() {
     props: { categories, topApps, gameApps },
   };
 }
+
+// code to add new apps and categories to graphcms database
+
+// useEffect(() => {
+  //   async function fetchData() {
+  //     const { app_list } = await fetch(
+  //       "https://data.42matters.com/api/v3.0/android/apps/top_google_charts.json?cat_key=FINANCE&limit=25&access_token=3617f3393433ee201ae4713cd41a0e941cb96587"
+  //     ).then((res) => res.json());
+
+  //     app_list.forEach((app) => {
+  //       app.package_name = app.package_name.replaceAll(".", "-").toLowerCase();
+  //       app.size = app.size || 30000000
+  //       app.cat_slug = app.category
+  //         .toLowerCase()
+  //         .replace("&", "")
+  //         .replace(/ /g, "");
+
+  //     })
+
+  //     const newCategory = {
+  //       name: app_list[0].category,
+  //       slug: app_list[0].category
+  //         .toLowerCase()
+  //         .replace(/ /g, "")
+  //         .replace("&", ""),
+  //     };
+  //     // newApps.app_list.forEach((category) => submitApps(category));
+  //     submitCategories(newCategory)
+  //     console.log(newCategory)
+  //     console.log(app_list)
+  //     app_list.forEach((app) => submitApps(app));
+
+  //   }
+  //   fetchData();
+  // }, []);

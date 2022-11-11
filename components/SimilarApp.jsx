@@ -6,14 +6,16 @@ const SimilarApp = ({ slugs }) => {
   const [apps, setApps] = useState([]);
   useEffect(() => {
     slugs.forEach(async (slug) => {
-      const newSlug = slug.replaceAll(".", "").toLowerCase();
-      const result = await getAppDetails(newSlug);
+      const newSlug = slug.replaceAll(".", "-").toLowerCase();
+      setTimeout(async () => {
+        const result = await getAppDetails(newSlug);
+        if (result == null || slugs.includes(newSlug)) {
+          return;
+        }
 
-      if (result == null || slugs.includes(newSlug)) {
-        return;
-      }
+        setApps((appsArr) => [...appsArr, result]);
+      }, 600);
 
-      setApps((appsArr) => [...appsArr, result]);
       return;
     });
   }, []);

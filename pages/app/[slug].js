@@ -16,9 +16,9 @@ const App = ({ app }) => {
   }
 
   return (
-    <div className=" max-w-[1000px] mx-auto pb-8">
-      <div className="flex items-center py-5 border-b">
-        <div className="flex w-[80%]">
+    <div className=" max-w-[1000px] mx-auto pb-8 px-6">
+      <div className="flex items-center flex-wrap md:flex-nowrap py-5 border-b">
+        <div className="flex w-[80%] mb-4 md:mb-0">
           <img src={app.icon} alt={app.title} className="pr-4" />
           <div className="leading-7">
             <h1 className="font-semibold text-2xl">{app.title}</h1>
@@ -52,9 +52,12 @@ const App = ({ app }) => {
             </span>
           </div>
         </div>
-        <div className="text-center">
+        <div className="text-center mx-auto">
           <span className="w-60 transition duration-500 transform hover:translate-y-1 inline-block bg-green-500 text-2xl font-medium text-white px-8 py-2 cursor-pointer rounded-lg">
-            <Link className='' href={app.application ? app.application.url : "#"}>
+            <Link
+              className=""
+              href={app.application ? app.application.url : app.market_url}
+            >
               <img src={downIcon} alt="" /> Download
             </Link>
           </span>
@@ -63,7 +66,7 @@ const App = ({ app }) => {
       <div className="border-b py-2">
         <div>
           <h1 className="font-medium text-2xl pb-2">Description</h1>
-          <p>
+          <div>
             {!description ? (
               <p className="font-light text-sm">
                 {app.description.substr(0, 400)}
@@ -72,7 +75,7 @@ const App = ({ app }) => {
             ) : (
               <Description description={app.descriptions} />
             )}
-          </p>
+          </div>
           <button
             className=" py-2 px-5 mt-4 rounded-md font-semibold text-orange-500 bg-gray-700 text-lg"
             onClick={() => {

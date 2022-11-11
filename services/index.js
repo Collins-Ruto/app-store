@@ -6,27 +6,17 @@ const graphqlAPI = process.env.NEXT_PUBLIC_APPLATE_BLOG_ENDPOINT;
 export const getCategories = async () => {
   const query = gql`
     query Apps {
-      categoriesConnection {
+      categoriesConnection(first: 6) {
         edges {
           node {
             name
             slug
             apps {
-              category
-              content_rating
-              created
-              description
-              downloads
-              icon
-              market_url
               rating
-              short_desc
-              similar
               size
+              icon
               slug
               title
-              website
-              version
             }
           }
         }
@@ -93,24 +83,14 @@ export const getAllCategories = async () => {
 export const getTopApps = async () => {
   const query = gql`
     query MyQuery {
-      appsConnection(first: 10, orderBy: rating_DESC) {
+      appsConnection(first: 8, orderBy: rating_DESC) {
         edges {
           node {
-            category
-            content_rating
-            created
-            description
-            downloads
             icon
-            market_url
             rating
-            short_desc
-            similar
             size
             slug
             title
-            version
-            website
           }
         }
       }
@@ -124,29 +104,18 @@ export const getTopApps = async () => {
 
 export const getCategoryApps = async (slug) => {
   const query = gql`
-    query getCategoryApps($slug: String!) {
-      appsConnection(where: { categories_some: { slug: $slug } }) {
+    query getCategoryApps($slug: String) {
+      categoriesConnection(where: { slug: $slug }) {
         edges {
-          cursor
           node {
-            content_rating
-            created
-            description
-            downloads
-            icon
-            market_url
-            rating
-            size
             slug
-            short_desc
-            similar
-            title
-            version
-            website
-            category
-            categories {
+            name
+            apps {
+              icon
+              rating
+              size
               slug
-              name
+              title
             }
           }
         }
@@ -156,7 +125,7 @@ export const getCategoryApps = async (slug) => {
 
   const result = await request(graphqlAPI, query, {slug});
 
-  return result.appsConnection.edges;
+  return result.categoriesConnection.edges;
 };
 export const getAppDetails = async (slug) => {
   const query = gql`

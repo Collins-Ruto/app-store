@@ -5,15 +5,16 @@ import { useEffect } from "react";
 import { AppCard, CategoriesCard } from "../components";
 import {
   getCategories,
+  getCategoryApps,
   getTopApps,
   submitApps,
   submitcategories,
   submitCategories,
 } from "../services";
 
-const Home = ({ categories, topApps }) => {
+const Home = ({ categories, topApps, gameApps }) => {
   
-
+  const gameApp = gameApps[0].node.apps
   return (
     <div className="flex min-h-screen px-4 flex-col items-center justify-center py-2">
       <Head>
@@ -55,9 +56,15 @@ const Home = ({ categories, topApps }) => {
           </Link>
         </div>
         <div className="overflow-hidden">
-          <CategoriesCard
-            category={categories.find((item) => item.node.name == "Games")}
-          />
+          <div>
+            <div className="block my-4 mx-auto p-0">
+              <div className="inline-flex h-full gap-2 mx-4 overflow-auto scrollbar-hide relative w-full mb-2 items-center ">
+                {gameApp.slice(0, 8).map((app, index) => (
+                  <AppCard key={index} app={app} />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       {categories.map(
@@ -93,8 +100,9 @@ export default Home;
 export async function getStaticProps() {
   const categories = (await getCategories()) || [];
   const topApps = (await getTopApps()) || [];
+  const gameApps = (await getCategoryApps("games")) || [];
 
   return {
-    props: { categories, topApps },
+    props: { categories, topApps, gameApps },
   };
 }

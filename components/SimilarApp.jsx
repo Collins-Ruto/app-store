@@ -14,7 +14,7 @@ const SimilarApp = ({ slugs }) => {
         }
 
         setApps((appsArr) => [...appsArr, result]);
-      }, 600);
+      }, 700);
 
       return;
     });

@@ -1,22 +1,19 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect } from 'react'
-import { AppCard, CategoriesCard } from '../components';
-import { getCategories, getTopApps, submitApps, submitcategories, submitCategories } from "../services";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect } from "react";
+import { AppCard, CategoriesCard } from "../components";
+import {
+  getCategories,
+  getTopApps,
+  submitApps,
+  submitcategories,
+  submitCategories,
+} from "../services";
 
-const Home = ({categories, topApps}) => {
-
-  const newApps = {}
-
-  console.log();
-
-  // useEffect(() => {
-  //   newApps.app_list.forEach((category) => submitApps(category));
-    
-  // }, []);
+const Home = ({ categories, topApps }) => {
   
-  // console.log('newApps',newApps.app_list)
+
   return (
     <div className="flex min-h-screen px-4 flex-col items-center justify-center py-2">
       <Head>
@@ -25,7 +22,7 @@ const Home = ({categories, topApps}) => {
       </Head>
       <div className="w-[100%] relative">
         <div className="min-w-full inline-flex justify-between ">
-          <Link href='#' className="font-bold text-3xl px-4">
+          <Link href="#" className="font-bold text-3xl px-4">
             <div
               src="https://cdn-mobile.aptoide.com/static/imgs/apps-ic.svg"
               className="bundle-header__Icon-sc-5qh14w-6 gIrIwm"
@@ -89,9 +86,9 @@ const Home = ({categories, topApps}) => {
       )}
     </div>
   );
-}
+};
 
-export default Home
+export default Home;
 
 export async function getStaticProps() {
   const categories = (await getCategories()) || [];

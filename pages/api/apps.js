@@ -21,6 +21,7 @@ export default async function newApp(req, res) {
       $downloads: String
       $short_desc: String
       $description: String
+      $descriptions: RichTextAST
       $website: String
       $icon: String
       $content_rating: String
@@ -28,6 +29,8 @@ export default async function newApp(req, res) {
       $package_name: String!
       $rating: Float
       $size: Int!
+      $cat_slug: String!
+      $min_sdk: String
     ) {
       createApp(
         data: {
@@ -39,6 +42,7 @@ export default async function newApp(req, res) {
           downloads: $downloads
           short_desc: $short_desc
           description: $description
+          descriptions: $descriptions
           website: $website
           icon: $icon
           content_rating: $content_rating
@@ -46,6 +50,8 @@ export default async function newApp(req, res) {
           slug: $package_name
           rating: $rating
           size: $size
+          min_sdk: $min_sdk
+          categories: { connect: { slug: $cat_slug } }
         }
       ) {
         id
@@ -55,9 +61,11 @@ export default async function newApp(req, res) {
 
   try {
     const result = await graphQLClient.request(query, req.body);
+    setTimeout(() => {}, 400);
     return res.status(200).send(result);
     
   } catch (error) {
+    setTimeout(() => {}, 400);
     console.log(error);
     return res.status(500).send(error);
   }

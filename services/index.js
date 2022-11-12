@@ -187,3 +187,4 @@ export const submitCategories = async (obj) => {
 
   return result.json();
 };
+

@@ -16,14 +16,17 @@ const Home = ({ categories, topApps, gameApps }) => {
   
   const gameApp = gameApps[0].node.apps
   return (
-    <div className="flex min-h-screen px-4 flex-col items-center justify-center py-2">
+    <div className="flex min-h-screen md:px-4 flex-col items-center justify-center py-2">
       <Head>
         <title>Applate</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="w-[100%] relative">
         <div className="min-w-full inline-flex justify-between ">
-          <Link href="#" className="font-bold text-3xl px-4">
+          <Link
+            href="#"
+            className="font-medium md:font-bold text-2xl md:text-3xl px-4"
+          >
             <div
               src="https://cdn-mobile.aptoide.com/static/imgs/apps-ic.svg"
               className="bundle-header__Icon-sc-5qh14w-6 gIrIwm"
@@ -45,12 +48,15 @@ const Home = ({ categories, topApps, gameApps }) => {
       </div>
       <div className="w-[100%] relative">
         <div className="min-w-full inline-flex justify-between ">
-          <Link href={`/category/games`} className="font-bold text-3xl px-4">
+          <Link
+            href={`/category/games`}
+            className="font-medium md:font-bold text-2xl md:text-3xl px-4"
+          >
             Games
           </Link>
           <Link
             href={`/category/games`}
-            className="font-bold text-2xl px-4 text-orange-600 cursor-pointer float-right"
+            className="font-medium md:font-bold text-2xl px-4 text-orange-600 cursor-pointer float-right"
           >
             See more{" "}
           </Link>
@@ -74,13 +80,13 @@ const Home = ({ categories, topApps, gameApps }) => {
               <div className="min-w-full inline-flex justify-between ">
                 <Link
                   href={`/category/${category.node.slug}`}
-                  className="font-bold text-3xl px-4"
+                  className="font-medium md:font-bold text-2xl md:text-3xl px-4"
                 >
                   {category.node.name}
                 </Link>
                 <Link
                   href={`/category/${category.node.slug}`}
-                  className="font-bold text-2xl px-4 text-orange-600 cursor-pointer float-right"
+                  className="font-medium md:font-bold text-2xl px-4 text-orange-600 cursor-pointer float-right"
                 >
                   See more{" "}
                 </Link>

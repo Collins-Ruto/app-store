@@ -11,14 +11,14 @@ const AppCard = ({ app }) => {
       className="block min-w-[7rem] border-2 max-w-[7rem] md:min-w-[10rem] md:max-w-[10rem] bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 mr-auto"
     >
       <img
-        className="p-2 rounded-t-lg"
+        className="p-1 md:p-2 rounded-t-lg pb-2"
         src={app.icon || icon}
         alt="product image"
       />
 
-      <div className="px-2 pb-2 relative overflow-auto">
-        <h5 className="h-16 md:h-14 text-sm md:text-base font-semibold tracking-tight text-gray-900 dark:text-white">
-          {app.title.substr(0, 30)}
+      <div className="px-1 md:px-2 pb-2 relative overflow-auto">
+        <h5 className="h-14 leading-tight text-sm md:text-base md:font-semibold tracking-tight text-gray-900 dark:text-white">
+          {app.title.substr(0, 25)}
         </h5>
 
         <div className="flex justify-between items-center align-middle">

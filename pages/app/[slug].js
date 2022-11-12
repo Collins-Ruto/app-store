@@ -16,12 +16,12 @@ const App = ({ app }) => {
   }
 
   return (
-    <div className=" max-w-[1000px] mx-auto pb-8 px-6">
+    <div className=" max-w-[1000px] mx-auto pb-8 px-4 md:px-6">
       <div className="flex items-center flex-wrap md:flex-nowrap py-5 border-b">
-        <div className="flex w-[80%] mb-4 md:mb-0">
-          <img src={app.icon} alt={app.title} className="pr-4" />
+        <div className="flex md:w-[80%] mb-4 md:mb-0">
+          <img src={app.icon} alt={app.title} className="pr-4 w-36 h-36 md:h-auto md:w-auto" />
           <div className="leading-7">
-            <h1 className="font-semibold text-2xl">{app.title}</h1>
+            <h1 className="font-semibold text-xl md:text-2xl">{app.title}</h1>
             <div className="flex justify-between w-40 items-center align-middle">
               <div className="flex text-orange-500 text-xs md:text-sm items-center">
                 <svg
@@ -42,12 +42,11 @@ const App = ({ app }) => {
             </div>
             <span>{app.downloads} Downloads</span>
             <br />
-            <span>Version: {app.version}</span> <br />
-            <a href={app.website} className="text-blue-500">
+            <span>Version: {app.version}</span> <br className="hidden md:block" />
+            <a href={app.website} className="text-blue-500 hidden md:block">
               {app.website}
             </a>{" "}
-            <br />
-            <span className="whitespace-pre-line text-gray-400 w-full">
+            <span className="whitespace-pre-line text-gray-400 w-full block">
               {moment(app.created).format("DD MMM, YYYY")}
             </span>
           </div>
@@ -65,7 +64,7 @@ const App = ({ app }) => {
       </div>
       <div className="border-b py-2">
         <div>
-          <h1 className="font-medium text-2xl pb-2">Description</h1>
+          <h1 className="font-medium text-xl md:text-2xl pb-2">Description</h1>
           <div>
             {!description ? (
               <p className="font-light text-sm">
@@ -73,7 +72,9 @@ const App = ({ app }) => {
                 {" ..."}
               </p>
             ) : (
-              <Description description={app.descriptions} />
+              <div>
+                {app.descriptions ? <Description description={app.descriptions} /> : app.description}
+              </div>
             )}
           </div>
           <button
@@ -86,7 +87,9 @@ const App = ({ app }) => {
           </button>
         </div>
         <br />
-        <h1 className="font-medium text-2xl pb-2">Aditional Information</h1>
+        <h1 className="font-medium text-xl md:text-2xl pb-2">
+          Aditional Information
+        </h1>
         <div className="flex justify-between max-w-md">
           <div>
             <h3 className="mt-2">Category</h3>
@@ -123,7 +126,7 @@ const App = ({ app }) => {
       </div>
       <br />
       <div>
-        <h1 className="font-medium text-2xl pb-2">You might like</h1>
+        <h1 className="font-medium text-xl md:text-2xl pb-2">You might like</h1>
         <div className="relative w-[100%]">
           <SimilarApp slugs={app.similar} />
         </div>

@@ -17,9 +17,9 @@ const App = ({ app }) => {
 
   return (
     <div className=" max-w-[1000px] mx-auto pb-8 px-4 md:px-6">
-      <div className="flex items-center flex-wrap md:flex-nowrap py-5 border-b">
+      <div className="flex items-center flex-wrap md:flex-nowrap pb-5 md:py-5 border-b">
         <div className="flex md:w-[80%] mb-4 md:mb-0">
-          <img src={app.icon} alt={app.title} className="pr-4 w-36 h-36 md:h-auto md:w-auto" />
+          <img src={app.icon} alt={app.title} className="pr-4 w-36 h-32 md:h-auto md:w-auto" />
           <div className="leading-7">
             <h1 className="font-semibold text-xl md:text-2xl">{app.title}</h1>
             <div className="flex justify-between w-40 items-center align-middle">
@@ -52,7 +52,7 @@ const App = ({ app }) => {
           </div>
         </div>
         <div className="text-center mx-auto">
-          <span className="w-60 transition duration-500 transform hover:translate-y-1 inline-block bg-green-500 text-2xl font-medium text-white px-8 py-2 cursor-pointer rounded-lg">
+          <span className=" md:w-60 transition duration-500 transform hover:translate-y-1 inline-block bg-green-500 text-2xl font-medium text-white px-8 py-2 cursor-pointer rounded-lg">
             <Link
               className=""
               href={app.application ? app.application.url : app.market_url}
@@ -62,7 +62,7 @@ const App = ({ app }) => {
           </span>
         </div>
       </div>
-      <div className="border-b py-2">
+      <div className="border-b py-2 overflow-hidden">
         <div>
           <h1 className="font-medium text-xl md:text-2xl pb-2">Description</h1>
           <div>

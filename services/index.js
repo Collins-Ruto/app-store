@@ -102,6 +102,28 @@ export const getTopApps = async () => {
   return result.appsConnection.edges;
 };
 
+export const getSearchApps = async (search) => {
+  const query = gql`
+    query MyQuery($search: String) {
+      appsConnection(where: {_search: $search}) {
+        edges {
+          node {
+            icon
+            rating
+            size
+            slug
+            title
+          }
+        }
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query, { search });
+
+  return result.appsConnection.edges;
+};
+
 export const getCategoryApps = async (slug) => {
   const query = gql`
     query getCategoryApps($slug: String) {

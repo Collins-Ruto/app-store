@@ -118,7 +118,7 @@ export async function getStaticProps() {
 // useEffect(() => {
   //   async function fetchData() {
   //     const { app_list } = await fetch(
-  //       "https://data.42matters.com/api/v3.0/android/apps/top_google_charts.json?cat_key=FINANCE&limit=25&access_token=3617f3393433ee201ae4713cd41a0e941cb96587"
+  //       "your link with api here"
   //     ).then((res) => res.json());
 
   //     app_list.forEach((app) => {

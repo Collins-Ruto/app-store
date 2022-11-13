@@ -21,7 +21,7 @@ const Header = () => {
   }
 
   return (
-    <div className="bg-orange container mx-auto px-2 sm:px-10 mb-8">
+    <div className="bg-orange container mx-auto px-2 sm:px-10 mb-8 fixed top-0 left-0 right-0 z-10">
       <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
         <div className="container flex flex-wrap justify-between items-center mx-auto">
           <a href="/" className="flex items-center">
@@ -62,10 +62,10 @@ const Header = () => {
             </button>
             <img
               src="https://flowbite.com/docs/images/logo.svg"
-              className="mr-3 h-6 sm:h-9"
+              className="mr-3 h-6 sm:h-12"
               alt=""
             />
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+            <span className="self-center text-xl md:text-3xl font-semibold whitespace-nowrap dark:text-white">
               APPlate
             </span>
           </a>

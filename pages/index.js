@@ -113,7 +113,12 @@ const Home = ({ categories, topApps, gameApps }) => {
       <footer className="w-full border-t border-gray-300 bg-gray-800 py-4">
         <div className="container mx-auto text-center text-gray-200">
           © 2023 Applate. All rights reserved. by{" "}
-          <a href="https://collinsruto.netlify.app">Collins Ruto</a>
+          <a
+            className="text-blue-400 font-semibold"
+            href="https://collinsruto.netlify.app"
+          >
+            Collins Ruto
+          </a>
         </div>
       </footer>
     </div>

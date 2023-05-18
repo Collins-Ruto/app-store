@@ -13,8 +13,7 @@ import {
 } from "../services";
 
 const Home = ({ categories, topApps, gameApps }) => {
-  
-  const gameApp = gameApps[0].node.apps
+  const gameApp = gameApps[0].node.apps;
   return (
     <div>
       <div className="flex min-h-screen md:px-4 flex-col items-center justify-center py-2">
@@ -31,6 +30,12 @@ const Home = ({ categories, topApps, gameApps }) => {
             data-react-helmet="true"
             name="keywords"
             content="apps, android, mods, moded, app, android app, free app, apk, free apk"
+          />
+          <meta data-react-helmet="true" name="author" content="Collins Ruto" />
+          <link
+            rel="canonical"
+            href="https://applate.vercel.app"
+            data-baseprotocol="https:"
           />
         </Head>
         <div className="w-[100%] relative">
@@ -140,34 +145,34 @@ export async function getStaticProps() {
 // code to add new apps and categories to graphcms database
 
 // useEffect(() => {
-  //   async function fetchData() {
-  //     const { app_list } = await fetch(
-  //       "your link with api here"
-  //     ).then((res) => res.json());
+//   async function fetchData() {
+//     const { app_list } = await fetch(
+//       "your link with api here"
+//     ).then((res) => res.json());
 
-  //     app_list.forEach((app) => {
-  //       app.package_name = app.package_name.replaceAll(".", "-").toLowerCase();
-  //       app.size = app.size || 30000000
-  //       app.cat_slug = app.category
-  //         .toLowerCase()
-  //         .replace("&", "")
-  //         .replace(/ /g, "");
+//     app_list.forEach((app) => {
+//       app.package_name = app.package_name.replaceAll(".", "-").toLowerCase();
+//       app.size = app.size || 30000000
+//       app.cat_slug = app.category
+//         .toLowerCase()
+//         .replace("&", "")
+//         .replace(/ /g, "");
 
-  //     })
+//     })
 
-  //     const newCategory = {
-  //       name: app_list[0].category,
-  //       slug: app_list[0].category
-  //         .toLowerCase()
-  //         .replace(/ /g, "")
-  //         .replace("&", ""),
-  //     };
-  //     // newApps.app_list.forEach((category) => submitApps(category));
-  //     submitCategories(newCategory)
-  //     console.log(newCategory)
-  //     console.log(app_list)
-  //     app_list.forEach((app) => submitApps(app));
+//     const newCategory = {
+//       name: app_list[0].category,
+//       slug: app_list[0].category
+//         .toLowerCase()
+//         .replace(/ /g, "")
+//         .replace("&", ""),
+//     };
+//     // newApps.app_list.forEach((category) => submitApps(category));
+//     submitCategories(newCategory)
+//     console.log(newCategory)
+//     console.log(app_list)
+//     app_list.forEach((app) => submitApps(app));
 
-  //   }
-  //   fetchData();
-  // }, []);
+//   }
+//   fetchData();
+// }, []);
